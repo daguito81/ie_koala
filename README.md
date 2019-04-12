@@ -1,2 +1,11 @@
 # ie_koala
-simple dataframe implementation for Adv. Python class
+## MBD 2018 - Adv.Python
+
+Group-K:  
+Dagoberto Romer  
+Meredith Hayward  
+Andrea Salvati  
+Moritz Notevengoingtotry  
+
+
+Library to create Dataframes with mixed data types
