@@ -1,6 +1,10 @@
 import numpy as np
 import ie_koala as ko
 
+'''
+This test passes GREEN
+'''
+
 
 def test_simple_dataframe_index_column():
     my_dict = {

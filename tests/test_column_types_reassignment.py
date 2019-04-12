@@ -1,5 +1,8 @@
 import ie_koala as ko
 import pytest
+'''
+This test pases 100% GREEN
+'''
 
 
 @pytest.mark.parametrize("col_index, col_name, col_result, name_type", [
