@@ -12,7 +12,7 @@ def test_simple_dataframe_index_column():
     df = ko.Dataframe(data=my_dict)
 
     expected_index = np.array([0, 1, 2])
-    expected_columns = np.array(['int', 'float', 'str', 'bool'])
+    expected_columns = ['int', 'float', 'str', 'bool']
 
     assert np.array_equal(df.index, expected_index)
     assert np.array_equal(df.columns, expected_columns)
