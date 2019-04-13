@@ -2,6 +2,11 @@ import numpy as np
 import ie_koala as ko
 import pytest
 
+'''
+This test is RED
+the index functionality is not yet implemented
+'''
+
 
 @pytest.mark.parametrize("col, expected_output", [
     ('int', np.array([1, 2, 3])),

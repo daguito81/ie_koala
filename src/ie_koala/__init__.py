@@ -1,4 +1,5 @@
 import numpy as np
+import itertools as it
 
 
 class Dataframe:
@@ -11,9 +12,13 @@ class Dataframe:
 
         if type(data) != dict:
             raise TypeError("Data needs to be a dictionary")
+        else:
+            self.data = data.values()  # Dict values as attribute
 
         if columns is None:
-            self.columns = np.array(list(data), dtype=str)
+            self.columns = []  # To keep column names as list of strings
+            for col in list(data):
+                self.columns.append(str(col))
 
             if index is None:
                 self.index = np.arange(len(data[list(data)[0]]))
@@ -31,8 +36,15 @@ class Dataframe:
             if type(columns) != list:
                 raise TypeError("column parameter needs to be a list")
             else:
-                self.columns = np.array(columns, dtype=str)
-                data = dict(zip(self.columns, data.values()))
+                self.columns = []  # To keep column names as list of strings
+                for col in columns:
+                    self.columns.append(col)
+
+                if len(self.columns) != len(data.values()):
+                    raise ValueError("List of column names need to be "
+                                     "equal to number of columns")
+                else:
+                    data = dict(zip(self.columns, data.values()))
 
             if index is None:
                 self.index = np.arange(len(data[list(data)[0]]))
@@ -45,15 +57,23 @@ class Dataframe:
                         raise TypeError(
                             "index parameter needs to be a list")
                     else:
-                        data['index'] = np.array(index)
-                        self.index = data['index']
+                        self.index = np.array(index)
+                        # removed the index from being part of the dict
 
+    @property  # This is some voodoo to make it print like a table
+    def frame(self):
+        frame = dict(zip(self.columns, self.data))
+        self._frame = frame
+        matrix = zip(*[value if isinstance(value, list) else it.repeat(value)
+                       for key, value in frame.items()])
+        print(''.join(['{:15}'.format(key) for key in frame.keys()]))
+        for row in matrix:
+            print(''.join(['{:15}'.format(str(item)) for item in row]))
 
-'''
-Notes:
-1) We need to refactor the index and column creation as their own functions
-so that we don't repeat code over again
-2) we need to create tests for edge cases and handle errors
-3) We need to make a check that all lists inside the data dictionary are of
- the same length
-'''
+    def __repr__(self):
+        return "Koala Dataframe, use .frame to visualize or print(df)"
+
+    def __str__(self):
+        return f"{dict(zip(self.columns, self.data))}"
+
+# Removed the notes as I put them as issues on the repo
