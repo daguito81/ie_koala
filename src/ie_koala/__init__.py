@@ -30,6 +30,10 @@ class Dataframe:
                     if type(index) != list:
                         raise TypeError(
                             "index parameter needs to be a list")
+                    elif type(index[0]) != int:
+                        raise TypeError(
+                            "index needs to be in integers"
+                        )
                     else:
                         self.index = np.array(index)
         else:
@@ -56,12 +60,22 @@ class Dataframe:
                     if type(index) != list:
                         raise TypeError(
                             "index parameter needs to be a list")
+                    elif type(index[0]) != int:
+                        raise TypeError(
+                            "index needs to be in integers"
+                        )
                     else:
                         self.index = np.array(index)
                         # removed the index from being part of the dict
+        self.df = dict(zip(self.columns, self.data))
+        # This is a copy of the Dataframe
 
     @property  # This is some voodoo to make it print like a table
     def frame(self):
+        """
+        Docstring here
+        This is to pretty print the dataframe
+        """
         frame = dict(zip(self.columns, self.data))
         self._frame = frame
         matrix = zip(*[value if isinstance(value, list) else it.repeat(value)
@@ -76,4 +90,23 @@ class Dataframe:
     def __str__(self):
         return f"{dict(zip(self.columns, self.data))}"
 
-# Removed the notes as I put them as issues on the repo
+    def __getitem__(self, item):
+        return np.array(self.df[item])
+
+    def loc(self, col, row=None):
+        if row is None:
+            if type(col) == int:
+                return np.array(self.df[list(self.df)[col]])
+            elif type(col) == str:
+                return np.array(self.df[col])
+            else:
+                raise TypeError("Column needs to be Integer or String")
+        else:
+            if type(row) != int:
+                raise TypeError("Index needs to be Integer")
+            if type(col) == int:
+                return np.array(self.df[list(self.df)[col][row]])
+            elif type(col == str):
+                return np.array(self.df[col][row])
+            else:
+                raise TypeError("Column needs to be Integer or String")
