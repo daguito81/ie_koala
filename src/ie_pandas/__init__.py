@@ -2,7 +2,7 @@ import numpy as np
 import itertools as it
 
 
-class Dataframe:
+class DataFrame:
     """
     Dataframe docstring
     #TODO Fill this
@@ -105,7 +105,7 @@ class Dataframe:
             if type(row) != int:
                 raise TypeError("Index needs to be Integer")
             if type(col) == int:
-                return np.array(self.df[list(self.df)[col][row]])
+                return np.array(self.df[list(self.df)[col]][row])
             elif type(col == str):
                 return np.array(self.df[col][row])
             else:

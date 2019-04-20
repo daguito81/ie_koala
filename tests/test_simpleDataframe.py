@@ -1,5 +1,5 @@
 import numpy as np
-import ie_koala as ko
+import ie_pandas as ko
 
 '''
 This test passes GREEN
@@ -13,7 +13,7 @@ def test_simple_dataframe_index_column():
         'str': ['one', 'two', 'three'],
         'bool': [True, False, True]
     }
-    df = ko.Dataframe(data=my_dict)
+    df = ko.DataFrame(data=my_dict)
 
     expected_index = np.array([0, 1, 2])
     expected_columns = ['int', 'float', 'str', 'bool']

@@ -1,10 +1,9 @@
 import numpy as np
-import ie_koala as ko
+import ie_pandas as ko
 import pytest
 
 '''
-This test is RED
-the index functionality is not yet implemented
+This test is GREEN
 '''
 
 
@@ -21,7 +20,7 @@ def test_df_indexing_col(col, expected_output):
         'str': ['one', 'two', 'three'],
         'bool': [True, False, True]
     }
-    df = ko.Dataframe(data=my_dict)
+    df = ko.DataFrame(data=my_dict)
 
     result = df.loc(col)
 
@@ -41,7 +40,28 @@ def test_df_indexing_col_ind(col, row, expected_output):
         'str': ['one', 'two', 'three', 'four'],
         'bool': [True, False, True, False]
     }
-    df = ko.Dataframe(data=my_dict)
+    df = ko.DataFrame(data=my_dict)
+
+    result = df.loc(col, row)
+
+    assert np.array_equal(result, expected_output)
+
+
+# Test added to test indexing of columns by number (Bug #19)
+@pytest.mark.parametrize("col, row, expected_output", [
+    (0, 0, np.array(1)),
+    (1, 1, np.array(2.2)),
+    (2, 2, np.array('three')),
+    (3, 3, np.array(False)),
+])
+def test_df_indexing_col_int_ind(col, row, expected_output):
+    my_dict = {
+        'int': [1, 2, 3, 4],
+        'float': [1.1, 2.2, 3.3, 4.4],
+        'str': ['one', 'two', 'three', 'four'],
+        'bool': [True, False, True, False]
+    }
+    df = ko.DataFrame(data=my_dict)
 
     result = df.loc(col, row)
 
