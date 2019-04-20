@@ -1,7 +1,7 @@
-import ie_koala as ko
+import ie_pandas as ko
 import pytest
 '''
-This test pases 100% GREEN
+This test is GREEN
 '''
 
 
@@ -24,7 +24,7 @@ def test_column_names_types_reassignment(col_index,
         4: [1, 2, 3],
         }
 
-    df = ko.Dataframe(my_dict)
+    df = ko.DataFrame(my_dict)
 
     assert df.columns == ['int', 'float', 'str', 'bool', '4']
 
