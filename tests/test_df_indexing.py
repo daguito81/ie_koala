@@ -15,10 +15,10 @@ This test is GREEN
 ])
 def test_df_indexing_col(col, expected_output):
     my_dict = {
-        'int': [1, 2, 3],
-        'float': [1.1, 2.2, 3.3],
-        'str': ['one', 'two', 'three'],
-        'bool': [True, False, True]
+        'int': np.array([1, 2, 3]),
+        'float': np.array([1.1, 2.2, 3.3]),
+        'str': np.array(['one', 'two', 'three']),
+        'bool': np.array([True, False, True]),
     }
     df = ko.DataFrame(data=my_dict)
 
@@ -35,10 +35,10 @@ def test_df_indexing_col(col, expected_output):
 ])
 def test_df_indexing_col_ind(col, row, expected_output):
     my_dict = {
-        'int': [1, 2, 3, 4],
-        'float': [1.1, 2.2, 3.3, 4.4],
-        'str': ['one', 'two', 'three', 'four'],
-        'bool': [True, False, True, False]
+        'int': np.array([1, 2, 3, 4]),
+        'float': np.array([1.1, 2.2, 3.3, 4.4]),
+        'str': np.array(['one', 'two', 'three', 'four']),
+        'bool': np.array([True, False, True, False]),
     }
     df = ko.DataFrame(data=my_dict)
 
@@ -56,10 +56,10 @@ def test_df_indexing_col_ind(col, row, expected_output):
 ])
 def test_df_indexing_col_int_ind(col, row, expected_output):
     my_dict = {
-        'int': [1, 2, 3, 4],
-        'float': [1.1, 2.2, 3.3, 4.4],
-        'str': ['one', 'two', 'three', 'four'],
-        'bool': [True, False, True, False]
+        'int': np.array([1, 2, 3, 4]),
+        'float': np.array([1.1, 2.2, 3.3, 4.4]),
+        'str': np.array(['one', 'two', 'three', 'four']),
+        'bool': np.array([True, False, True, False]),
     }
     df = ko.DataFrame(data=my_dict)
 

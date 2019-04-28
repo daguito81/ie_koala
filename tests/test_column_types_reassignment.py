@@ -1,4 +1,5 @@
 import ie_pandas as ko
+import numpy as np
 import pytest
 '''
 This test is GREEN
@@ -17,12 +18,12 @@ def test_column_names_types_reassignment(col_index,
                                          col_result,
                                          name_type):
     my_dict = {
-        'int': [1, 2, 3],
-        'float': [1.1, 2.2, 3.3],
-        'str': ['one', 'two', 'three'],
-        'bool': [True, False, True],
-        4: [1, 2, 3],
-        }
+        'int': np.array([1, 2, 3]),
+        'float': np.array([1.1, 2.2, 3.3]),
+        'str': np.array(['one', 'two', 'three']),
+        'bool': np.array([True, False, True]),
+        4: np.array([1, 2, 3]),
+    }
 
     df = ko.DataFrame(my_dict)
 
