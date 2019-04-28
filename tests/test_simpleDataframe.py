@@ -8,10 +8,10 @@ This test passes GREEN
 
 def test_simple_dataframe_index_column():
     my_dict = {
-        'int': [1, 2, 3],
-        'float': [1.1, 2.2, 3.3],
-        'str': ['one', 'two', 'three'],
-        'bool': [True, False, True]
+        'int': np.array([1, 2, 3]),
+        'float': np.array([1.1, 2.2, 3.3]),
+        'str': np.array(['one', 'two', 'three']),
+        'bool': np.array([True, False, True]),
     }
     df = ko.DataFrame(data=my_dict)
 
