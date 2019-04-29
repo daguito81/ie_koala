@@ -46,7 +46,7 @@ class DataFrame:
 
             if len(self.columns) != len(data.values()):
                 raise ValueError("List of column names need to be "
-                                    "equal to number of columns")
+                                 "equal to number of columns")
 
             if index is None:
                 self.index = np.arange(len(data[list(data)[0]]))
@@ -76,7 +76,8 @@ class DataFrame:
         """
         frame = self.df
         self._frame = frame
-        matrix = zip(*[list(value) if isinstance(list(value), list) else it.repeat(list(value))
+        matrix = zip(*[list(value) if isinstance(list(value), list)
+                       else it.repeat(list(value))
                        for key, value in frame.items()])
         print(''.join(['{:15}'.format(key) for key in frame.keys()]))
         for row in matrix:
@@ -108,4 +109,3 @@ class DataFrame:
                 return np.array(self.df[col][row])
             else:
                 raise TypeError("Column needs to be Integer or String")
-
