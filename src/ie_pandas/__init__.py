@@ -39,16 +39,14 @@ class DataFrame:
         else:
             if type(columns) != list:
                 raise TypeError("column parameter needs to be a list")
-            else:
-                self.columns = []  # To keep column names as list of strings
-                for col in columns:
-                    self.columns.append(col)
 
-                if len(self.columns) != len(data.values()):
-                    raise ValueError("List of column names need to be "
-                                     "equal to number of columns")
-                else:
-                    data = dict(zip(self.columns, data.values()))
+            self.columns = []  # To keep column names as list of strings
+            for col in columns:
+                self.columns.append(col)
+
+            if len(self.columns) != len(data.values()):
+                raise ValueError("List of column names need to be "
+                                 "equal to number of columns")
 
             if index is None:
                 self.index = np.arange(len(data[list(data)[0]]))
@@ -76,9 +74,10 @@ class DataFrame:
         Docstring here
         This is to pretty print the dataframe
         """
-        frame = dict(zip(self.columns, self.data))
+        frame = self.df
         self._frame = frame
-        matrix = zip(*[value if isinstance(value, list) else it.repeat(value)
+        matrix = zip(*[list(value) if isinstance(list(value), list)
+                       else it.repeat(list(value))
                        for key, value in frame.items()])
         print(''.join(['{:15}'.format(key) for key in frame.keys()]))
         for row in matrix:
@@ -88,7 +87,7 @@ class DataFrame:
         return "Koala Dataframe, use .frame to visualize or print(df)"
 
     def __str__(self):
-        return f"{dict(zip(self.columns, self.data))}"
+        return f"{self.df}"
 
     def __getitem__(self, item):
         return np.array(self.df[item])
