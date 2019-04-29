@@ -109,3 +109,63 @@ class DataFrame:
                 return np.array(self.df[col][row])
             else:
                 raise TypeError("Column needs to be Integer or String")
+
+    def sum(self):
+        """
+        Docstring goes here
+        """
+        result = []
+        for key in self.df.keys():
+            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+                result.append(self.dfdf[key].sum())
+        return result
+
+    def min(self):
+        """
+        Docstring goes here
+        """
+        result = []
+        for key in self.df.keys():
+            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+                result.append(self.df[key].min())
+        return result
+
+    def max(self):
+        """
+        Docstring goes here
+        """
+        result = []
+        for key in self.df.keys():
+            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+                result.append(self.df[key].max())
+        return result
+
+    def mean(self):
+        """
+        Docstring goes here
+        """
+        result = []
+        for key in self.df.keys():
+            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+                result.append(self.df[key].mean())
+        return result
+
+    def median(self):
+        """
+        Docstring goes here
+        """
+        result = []
+        for key in self.df.keys():
+            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+                result.append(np.median(self.df[key]))
+        return result
+
+    def std(self):
+        """
+        Docstring goes here
+        """
+        result = []
+        for key in self.df.keys():
+            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+                result.append(self.df[key].std())
+        return result
