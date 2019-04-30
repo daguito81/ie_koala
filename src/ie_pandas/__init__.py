@@ -116,8 +116,9 @@ class DataFrame:
         """
         result = []
         for key in self.df.keys():
-            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
-                result.append(self.dfdf[key].sum())
+            if (np.issubdtype(type(self.df[key][0]), np.number))\
+                    or (type(self.df[key][0]) == np.bool_):
+                result.append(self.df[key].sum())
         return result
 
     def min(self):
@@ -126,7 +127,8 @@ class DataFrame:
         """
         result = []
         for key in self.df.keys():
-            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+            if (np.issubdtype(type(self.df[key][0]), np.number))\
+                    or (type(self.df[key][0]) == np.bool_):
                 result.append(self.df[key].min())
         return result
 
@@ -136,7 +138,8 @@ class DataFrame:
         """
         result = []
         for key in self.df.keys():
-            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+            if (np.issubdtype(type(self.df[key][0]), np.number))\
+                    or (type(self.df[key][0]) == np.bool_):
                 result.append(self.df[key].max())
         return result
 
@@ -146,7 +149,8 @@ class DataFrame:
         """
         result = []
         for key in self.df.keys():
-            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+            if (np.issubdtype(type(self.df[key][0]), np.number))\
+                    or (type(self.df[key][0]) == np.bool_):
                 result.append(self.df[key].mean())
         return result
 
@@ -156,7 +160,8 @@ class DataFrame:
         """
         result = []
         for key in self.df.keys():
-            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+            if (np.issubdtype(type(self.df[key][0]), np.number))\
+                    or (type(self.df[key][0]) == np.bool_):
                 result.append(np.median(self.df[key]))
         return result
 
@@ -166,6 +171,7 @@ class DataFrame:
         """
         result = []
         for key in self.df.keys():
-            if (np.issubdtype(type(self.df[key][0]), np.number)) or (type(self.df[key][0]) == np.bool_):
+            if (np.issubdtype(type(self.df[key][0]), np.number))\
+                    or (type(self.df[key][0]) == np.bool_):
                 result.append(self.df[key].std())
         return result
