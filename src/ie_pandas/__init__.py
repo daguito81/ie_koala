@@ -11,19 +11,30 @@ class DataFrame:
 
     def __init__(self, data, columns=None, index=None):
 
+        # This checks if the provided data is a dictionary
         if type(data) != dict:
             raise TypeError("Data needs to be a dictionary")
         else:
             self.data = data.values()  # Dict values as attribute
 
+        # This checks that all arrays inside the dict are the same length
+        test = []
+        for i in self.data:
+            test.append(len(i))
+        if len(set(test)) != 1:
+            raise ValueError("Lenght of all arrays must be equal")
+
+        # Constructor if no columns parameter is passed
         if columns is None:
             self.columns = []  # To keep column names as list of strings
             for col in list(data):
                 self.columns.append(str(col))
 
+            # Constructor if no index is provided
             if index is None:
                 self.index = np.arange(len(data[list(data)[0]]))
 
+            # Constructor if index is provided
             else:
                 if len(index) != len(data[list(data)[0]]):
                     raise ValueError("Length mismatch: data != index")
@@ -37,6 +48,8 @@ class DataFrame:
                         )
                     else:
                         self.index = np.array(index)
+
+        # Constructor if column parameter is passed
         else:
             if type(columns) != list:
                 raise TypeError("column parameter needs to be a list")
@@ -65,9 +78,12 @@ class DataFrame:
                         )
                     else:
                         self.index = np.array(index)
-                        # removed the index from being part of the dict
+                        # This index is not used so far but set for future
+        # This creates the "meat" of the dataframe object
         self.df = dict(zip(self.columns, self.data))
-        # This is a copy of the Dataframe
+        # This casts the data into np.arrays in case they were lists
+        for key in self.df:
+            self.df[key] = np.array(self.df[key])
 
     @property  # This is some voodoo to make it print like a table
     def frame(self):
@@ -82,15 +98,21 @@ class DataFrame:
         for row in matrix:
             print(''.join(['{:15}'.format(str(item)) for item in row]))
 
+    # This is to give instructions on how to print the dataframe
     def __repr__(self):
         return "Koala Dataframe, use .frame to visualize or print(df)"
 
+    # Prints the DataFrame as a dictionary
     def __str__(self):
         return f"{self.df}"
 
+    # This allows bracket indexing " df["colname"] "
     def __getitem__(self, item):
         return np.array(self.df[item])
 
+    # This allows the DataFrame to be updated with new data
+    # This can replace or add columns
+    # Only works with full columns
     def __setitem__(self, idx, newcol):
         if type(newcol) != np.ndarray:
             raise TypeError("Input needs to be a numpy array")
@@ -99,6 +121,8 @@ class DataFrame:
         self.df[idx] = newcol
         self.columns = list(self.df)
 
+    # This function allows us to index by columns and rows
+    # in string or integers df.loc(0, 0) <- returns the top left element
     def loc(self, col, row=None):
         if row is None:
             if type(col) == int:
@@ -117,12 +141,14 @@ class DataFrame:
             else:
                 raise TypeError("Column needs to be Integer or String")
 
+    # This returns a list of all the column elements in a row
     def get_row(self, row):
         result = []
         for col in self.df.keys():
             result.append(self[col][row])
         return result
 
+    # These are all aggregation functions (they return a list)
     def sum(self):
         """
         Docstring goes here
