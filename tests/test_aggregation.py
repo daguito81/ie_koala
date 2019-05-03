@@ -31,9 +31,9 @@ def test_aggregation():
         1.4142135623730951,
     ]
 
-    assert np.array_equal(df.sum(), expected_sum)
-    assert np.array_equal(df.min(), expected_min)
-    assert np.array_equal(df.max(), expected_max)
-    assert np.array_equal(df.mean(), expected_mean)
-    assert np.array_equal(df.median(), expected_median)
-    assert np.array_equal(df.std(), expected_std)
+    assert df.sum() == expected_sum
+    assert df.min() == expected_min
+    assert df.max() == expected_max
+    assert df.mean() == expected_mean
+    assert df.median() == expected_median
+    assert df.std() == expected_std
