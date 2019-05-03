@@ -91,6 +91,14 @@ class DataFrame:
     def __getitem__(self, item):
         return np.array(self.df[item])
 
+    def __setitem__(self, idx, newcol):
+        if type(newcol) != np.ndarray:
+            raise TypeError("Input needs to be a numpy array")
+        if len(newcol) != len(self.df[self.columns[0]]):
+            raise TypeError("Input needs to be same length as dataframe")
+        self.df[idx] = newcol
+        self.columns = list(self.df)
+
     def loc(self, col, row=None):
         if row is None:
             if type(col) == int:
