@@ -117,6 +117,12 @@ class DataFrame:
             else:
                 raise TypeError("Column needs to be Integer or String")
 
+    def get_row(self, row):
+        result = []
+        for col in self.df.keys():
+            result.append(self[col][row])
+        return result
+
     def sum(self):
         """
         Docstring goes here
