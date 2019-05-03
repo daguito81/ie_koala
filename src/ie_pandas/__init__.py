@@ -117,7 +117,7 @@ class DataFrame:
         if type(newcol) != np.ndarray:
             raise TypeError("Input needs to be a numpy array")
         if len(newcol) != len(self.df[self.columns[0]]):
-            raise TypeError("Input needs to be same length as dataframe")
+            raise ValueError("Input needs to be same length as dataframe")
         self.df[idx] = newcol
         self.columns = list(self.df)
 
@@ -136,13 +136,15 @@ class DataFrame:
                 raise TypeError("Index needs to be Integer")
             if type(col) == int:
                 return np.array(self.df[list(self.df)[col]][row])
-            elif type(col == str):
+            elif type(col) == str:
                 return np.array(self.df[col][row])
             else:
                 raise TypeError("Column needs to be Integer or String")
 
     # This returns a list of all the column elements in a row
     def get_row(self, row):
+        if type(row) != int:
+            raise TypeError("Row needs to be an Integer")
         result = []
         for col in self.df.keys():
             result.append(self[col][row])
