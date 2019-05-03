@@ -2,7 +2,7 @@ import numpy as np
 import ie_pandas as ko
 
 """
-This test is RED
+This test is GREEN
 """
 
 
@@ -24,8 +24,8 @@ def test_get_row():
     expected_row3 = [4, 4.4, "four", False, 4, 9]
     expected_row4 = [5, 5.5, "five", True, 5, 10]
 
-    assert df.get_row(0), expected_row0
-    assert df.get_row(1), expected_row1
-    assert df.get_row(2), expected_row2
-    assert df.get_row(3), expected_row3
-    assert df.get_row(4), expected_row4
+    assert df.get_row(0) == expected_row0
+    assert df.get_row(1) == expected_row1
+    assert df.get_row(2) == expected_row2
+    assert df.get_row(3) == expected_row3
+    assert df.get_row(4) == expected_row4
