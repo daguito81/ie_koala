@@ -14,6 +14,9 @@ class DataFrame:
         # This checks if the provided data is a dictionary
         if type(data) != dict:
             raise TypeError("Data needs to be a dictionary")
+        elif type(data[list(data)[0]]) != list \
+                and type(data[list(data)[0]]) != np.ndarray:
+            raise TypeError("Dictionary needs to be of lists or numpy arrays")
         else:
             self.data = data.values()  # Dict values as attribute
 
