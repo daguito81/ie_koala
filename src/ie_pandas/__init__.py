@@ -75,12 +75,10 @@ class DataFrame:
         Docstring here
         This is to pretty print the dataframe
         """
-        frame = self.df
-        self._frame = frame
         matrix = zip(*[list(value) if isinstance(list(value), list)
                        else it.repeat(list(value))
-                       for key, value in frame.items()])
-        print(''.join(['{:15}'.format(key) for key in frame.keys()]))
+                       for key, value in self.df.items()])
+        print(''.join(['{:15}'.format(key) for key in self.df.keys()]))
         for row in matrix:
             print(''.join(['{:15}'.format(str(item)) for item in row]))
 

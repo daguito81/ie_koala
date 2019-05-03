@@ -31,3 +31,5 @@ def test_set_items():
     df['newcol'] = np.array(['a', 'b', 'c', 'd', 'e'])
 
     assert df.df == new_dict
+    assert df['int'] == new_dict['int']
+    assert df['newcol'] == new_dict['new_col']
