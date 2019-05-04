@@ -263,3 +263,10 @@ class DataFrame:
             df_copy = self.df.copy()
             df_copy.pop(drop_col)
             return DataFrame(df_copy)
+        
+    # This function returns the length of a specific column
+    def __len__(self):
+        """
+        Docstring here
+        """
+        return len(self.df[list(self.df)[0]])
