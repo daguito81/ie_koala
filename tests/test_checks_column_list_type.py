@@ -14,8 +14,8 @@ def test_checks_column_list_type_simple():
         'bool': np.array([True, False, True]),
     }
     try:
-        _ = ko.DataFrame(data=my_dict, columns=[1, 2, 3, 4])  # Good
-        _ = ko.DataFrame(data=my_dict, columns="One Two Three Four")  # Bad
+        ko.DataFrame(data=my_dict, columns=[1, 2, 3, 4])  # Good
+        ko.DataFrame(data=my_dict, columns="One Two Three Four")  # Bad
         error_catched = 0
     except TypeError:
         error_catched = 1
