@@ -17,7 +17,7 @@ def test_len():
     }
 
     df = ko.DataFrame(data=my_dict)
-    
+
     expected_len = 5
 
     assert len(df) == expected_len
