@@ -109,9 +109,16 @@ To contribute and develop on the ie_pandas library, any issue or feature needs t
 To install the library for development purposes do :
 1) `git clone https://github.com/daguito81/ie_koala.git`
 2) `cd ie_koala`
-3) `pip install -e .`
+3) `pip install -e .[dev]`
 
-This will allow the library to dynamically include the changes to the code without having to reinstall the package after every change.
+This will allow the library to dynamically include the changes to the code without having to reinstall the package after every change.  
+The[dev] parameter will allow it to include the extra packages for testing.  
+In case of any trouble running the tests. You can manually install them with:  
+```
+pip install pytest
+pip install pytest-cov
+pip install pytest-flake8
+```
 
 ## Testing
 All new tests should be included in the tests folder.
