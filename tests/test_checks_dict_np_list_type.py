@@ -28,7 +28,7 @@ def test_checks_data_dict_simple():
 
     # Check the error handling for Bug #43
     try:
-        _ = ko.DataFrame(bad_dict)
+        ko.DataFrame(bad_dict)
         error_catched = 0
     except TypeError:
         error_catched = 1

@@ -14,7 +14,7 @@ def test_length_check_simple():
         'bool': np.array([True, False, True]),
     }
     try:
-        _ = ko.DataFrame(data=my_dict_bad)
+        ko.DataFrame(data=my_dict_bad)
         error_catched = 0
     except ValueError:
         error_catched = 1
