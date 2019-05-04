@@ -5,6 +5,7 @@ import itertools as it
 class DataFrame:
     """
     Dataframe docstring
+    ed3f22cc
     #TODO Fill this
     This is a test docstring so we can commit it
     """
@@ -219,3 +220,46 @@ class DataFrame:
                     or (type(self.df[key][0]) == np.bool_):
                 result.append(self.df[key].std())
         return result
+
+    def rename(self, old_col, new_col, inplace=True):
+        """
+        Docstring goes here
+        This way should maintain the order of the elements
+        in the dictionary which will be better for visualization
+        and testing purposes
+        """
+        if type(new_col) != str or type(old_col) != str:
+            raise TypeError("Column name needs to be a String")
+        if type(inplace) != bool:
+            raise TypeError("Inplace can only be Boolean")
+        if old_col not in self.columns:
+            raise ValueError("{} is not in the Dataframe".format(old_col))
+
+        new_dict = {}
+        for key, value in zip(self.df.keys(), self.df.values()):
+            new_key = key if key != old_col else new_col
+            new_dict[new_key] = self.df[key]
+        if inplace:
+            self.df = new_dict
+            self.columns = list(self.df)
+        else:
+            return DataFrame(new_dict)
+
+    def drop(self, drop_col, inplace=True):
+        """
+        Docstring here
+        """
+        if type(drop_col) != str:
+            raise TypeError("Column name needs to be a string")
+        if type(inplace) != bool:
+            raise TypeError("Inplace can only be Boolean")
+        if drop_col not in self.columns:
+            raise ValueError("This column is not in DataFrame")
+
+        if inplace:
+            self.df.pop(drop_col)
+            self.columns = list(self.df)
+        else:
+            df_copy = self.df.copy()
+            df_copy.pop(drop_col)
+            return DataFrame(df_copy)
