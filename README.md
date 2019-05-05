@@ -19,7 +19,7 @@ The current functionality of the library is:
 4) Aggregation functions (sum, min, max, mean, median, std supported)
 5) Modification and adding new columns by reassigning numpy arrays to indexed columns Ex: `df['int] = np.array(...)`
 6) Column renaming and column drop both as copies and in place
-7) print the data in both dictionary and table format by using `print(df)` for dictionary or `df.frame` for table output
+7) print the data in table format by using `print(df)` `df` in interactive shell or notebook
 
 The data is also treated as a dictionary inside the Object so we can access it with the `df` attribute and then make any operation to it that would be possible to do on a dictionary. Including passing it into another data library like pandas.
 
@@ -99,8 +99,8 @@ df['newcol'] = np.array(['New', 'Data', 'Here'])
 ```
 ### Visualize
 To visualize the dataframe, we have provided 2 methods.  
-1) to view it as a dictionary you can use `print(df)`
-2) to see it as a table you must use `df.frame`
+1) to view it in a console output from a script you can use `print(df)`
+2) to see it as a table in an interactive shell like python shell or notebook you can simply write the name of the data frame `df` to see it. 
 
 # Developer Instructions
 To contribute and develop on the ie_pandas library, any issue or feature needs to be tested and be fully 100% pep8 compliant. We use flake8 for styling and unit testing to test the code in the library.  
