@@ -3,6 +3,9 @@ import numpy as np
 import pytest
 '''
 This test is GREEN
+This is a collection of tests for column modifications.
+It includes renaming & dropping columns.
+Effect of changes and errors for each function are validated. 
 '''
 
 

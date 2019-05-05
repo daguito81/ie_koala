@@ -3,6 +3,7 @@ import ie_pandas as ko
 
 """
 This test is GREEN
+The test is to validate the functioning of horizontal indexing.
 """
 
 

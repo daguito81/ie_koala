@@ -3,6 +3,7 @@ import ie_pandas as ko
 
 """
 This test passes GREEN
+Test to validate consitent length of all arrays (columns) in a dataframe
 """
 
 
