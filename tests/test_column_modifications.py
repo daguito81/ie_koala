@@ -112,7 +112,7 @@ def test_col_rename_errors():
 
     # Test that inplace is Boolean
     try:
-        df.rename('int', 3, inplace="Seven")
+        df.rename('int', 'Integer', inplace="Seven")
         caught_error_3 = False
     except TypeError:
         caught_error_3 = True
