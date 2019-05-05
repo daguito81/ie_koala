@@ -3,7 +3,8 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
-Purpose of this test is to check that indexing and data types are assigned properly.
+Purpose of this test is to check that indexing and
+data types are assigned properly.
 '''
 
 

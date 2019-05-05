@@ -4,7 +4,8 @@ import ie_pandas as ko
 '''
 This test passes GREEN
 This test aims to verify that a ValueError is raised
-if the length of the list passed in the columns parameter inside the DataFrame function
+if the length of the list passed in the columns parameter
+ inside the DataFrame function
 is not equal to the length of the dictionary keys.
 '''
 

@@ -4,7 +4,8 @@ import ie_pandas as ko
 '''
 This test passes GREEN
 This test aims to verify that a TypeError is raised
-if the type of the argument passed in the columns parameter inside the DataFrame function is not a list.
+if the type of the argument passed in the columns parameter inside
+ the DataFrame function is not a list.
 '''
 
 

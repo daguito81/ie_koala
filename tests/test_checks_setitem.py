@@ -5,7 +5,8 @@ import ie_pandas as ko
 This test passes GREEN
 This test aims to verify that a TypeError is raised
 if the type of the new column is not a np.ndarray and that a
-ValueError is raised if the length of the new column is not equal to the length of the old column. 
+ValueError is raised if the length of the new column is not equal
+ to the length of the old column.
 '''
 
 
