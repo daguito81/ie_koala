@@ -24,4 +24,4 @@ def test_checks_frame_print_simple():
         '2              2.2            two            \n'\
         '3              3.3            three          \n'
 
-    assert df.frame() == expected_result
+    assert df._frame() == expected_result
