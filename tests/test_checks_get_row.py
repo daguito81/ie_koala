@@ -3,6 +3,8 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
+This test aims to verify that get_row function returns the expected row
+and that it raises a TypeError if an invalid argument is passed in it.
 '''
 
 

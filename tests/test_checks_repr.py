@@ -3,6 +3,7 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
+The test aims to verify the corret implementation of the repr functionality.
 '''
 
 

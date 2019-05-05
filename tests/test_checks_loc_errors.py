@@ -3,6 +3,7 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
+The test aims to veriry the correct implementation of the .loc functionality.
 '''
 
 
