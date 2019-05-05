@@ -4,7 +4,7 @@ import itertools as it
 
 class DataFrame:
     """
-    Creates a DataFrame Object to interact with the data
+    Creates a DataFrame Object to interact with the data.
 
     In this section, the basic functionalities of the DataFrame class are created.
     
@@ -35,8 +35,8 @@ class DataFrame:
     df = DataFrame(data=my_dict, columns=['integer', 'float', 'strings'], index=[0, 1, 2])
 
     Visualizing:
-    The DataFrame can be visualized by simply passing the name in an interactive shell
-    or by calling the print(df) function.
+        The DataFrame can be visualized by simply passing the name in an interactive shell
+        or by calling the print(df) function.
 
     """
 
