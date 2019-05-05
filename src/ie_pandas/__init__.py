@@ -216,11 +216,7 @@ class DataFrame:
     # These are all aggregation functions (they return a list)
     def sum(self):
         """
-        Arguments:
-        
-        Results:
-
-        Similar to:
+        Returns a list with the value of the sum of all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -231,11 +227,7 @@ class DataFrame:
 
     def min(self):
         """
-        Arguments:
-
-        Results:
-
-        Similar to:
+        Returns a list with the minimum value from all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -246,11 +238,7 @@ class DataFrame:
 
     def max(self):
         """
-        Arguments:
-
-        Results:
-
-        Similar to:
+        Returns a list with the maximum value from all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -261,12 +249,7 @@ class DataFrame:
 
     def mean(self):
         """
-        Arguments:
-
-        Results:
-
-        Similar to:
-
+        Returns a list with the mean of all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -277,11 +260,7 @@ class DataFrame:
 
     def median(self):
         """
-        Arguments:
-
-        Results:
-
-        Similar to:
+        Returns a list with the median of all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -292,11 +271,7 @@ class DataFrame:
 
     def std(self):
         """
-        Arguments:
-
-        Results:
-
-        Similar to:
+        Returns a list with the standard deviation of all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -348,7 +323,7 @@ class DataFrame:
         inplace: boolean
             Defines if the change will be done to the current
             instance of the Dataframe or return a new instance with the new attributes.
-            
+
         """
         if type(drop_col) != str:
             raise TypeError("Column name needs to be a string")
