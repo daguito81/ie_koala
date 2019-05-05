@@ -171,16 +171,16 @@ class DataFrame:
     # This function returns the length of a specific column
     def __len__(self):
         """
-        Docstring here
+        Returns a list of all elements in the DataFrame
+        in the specified row.
 
-        Arguments: 
-        
+        Paramaters:
+            row : int
+                Must be an integer
+                0-indexed
         
         Returns:
-            The length of a specific column in the dataframe.
-
-        Similar to: 
-            len() function in pandas
+            A list
         """
         return len(self.df[list(self.df)[0]])
 
