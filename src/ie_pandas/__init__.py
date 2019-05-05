@@ -4,10 +4,40 @@ import itertools as it
 
 class DataFrame:
     """
-    Dataframe docstring
-    ed3f22cc
-    #TODO Fill this
-    This is a test docstring so we can commit it
+    Creates a DataFrame Object to interact with the data.
+
+    In this section, the basic functionalities of the DataFrame class are created.
+    
+    The arguments of the function are:
+
+    Parameters
+    ---------------
+    data : dict
+        Must be a dictionary of lists or dictionary of numpy arrays.
+        All the elements of the dictionary must have the same length.
+    columns=None : list of strings
+        Must be a list of strings.
+        The number of items in the list must be the same size as the number
+        of keys in the dictionary passed to the data.
+    index=None : list of integers
+        Must be a list of integers.
+        This attribute is not currently in use for any functionality.
+        get_row() works with the index being 0 - indexed at all times.
+
+    Example:
+    ---------------
+    from ie_pandas import DataFrame
+    my_dict = {
+        'int': [1, 2, 3],
+        'float': [1.1, 2.2, 3.3],
+        'string': ['one', 'two', 'three'],
+    }
+    df = DataFrame(data=my_dict, columns=['integer', 'float', 'strings'], index=[0, 1, 2])
+
+    Visualizing:
+        The DataFrame can be visualized by simply passing the name in an interactive shell
+        or by calling the print(df) function.
+
     """
 
     def __init__(self, data, columns=None, index=None):
@@ -26,7 +56,7 @@ class DataFrame:
         for i in self.data:
             test.append(len(i))
         if len(set(test)) != 1:
-            raise ValueError("Lenght of all arrays must be equal")
+            raise ValueError("Length of all arrays must be equal")
 
         # Constructor if no columns parameter is passed
         if columns is None:
@@ -91,8 +121,17 @@ class DataFrame:
 
     def _frame(self):
         """
-        Docstring here
-        This is to pretty print the dataframe
+        Prints the DataFrame in a user-friendly format. 
+        
+        The frame functionality also prints the
+        data types for all the columns. 
+        The df command can be used interactively to print the 
+        DataFrame or the DataFrame can be printed using print(df). 
+        Both methods will return the same result. 
+        
+        Note:
+            frame() is protected; 
+            it should not be directly called by the user
         """
         matrix = zip(*[list(value) if isinstance(list(value), list)
                        else it.repeat(list(value))
@@ -112,20 +151,38 @@ class DataFrame:
 
     # This is to give instructions on how to print the dataframe
     def __repr__(self):
+        """
+        Prints the DataFrame by calling print(df).
+        """
         return self._frame()
 
     # Prints the DataFrame as well
     def __str__(self):
+        """
+        Prints the DataFrame by calling df interactively.
+        """
         return self._frame()
 
     # This allows bracket indexing " df["colname"] "
     def __getitem__(self, item):
+        """
+        Allows the use of bracket indexing.
+        
+        Example: 
+            df['int']
+        """
         return np.array(self.df[item])
 
     # This allows the DataFrame to be updated with new data
     # This can replace or add columns
     # Only works with full columns
     def __setitem__(self, idx, newcol):
+        """
+        Replaces data in the DataFrame.
+        
+        Note:
+            Updates self.columns automatically.
+        """
         if type(newcol) != np.ndarray:
             raise TypeError("Input needs to be a numpy array")
         if len(newcol) != len(self.df[self.columns[0]]):
@@ -133,16 +190,32 @@ class DataFrame:
         self.df[idx] = newcol
         self.columns = list(self.df)
 
-        # This function returns the length of a specific column
+    # This function returns the length of a specific column
     def __len__(self):
         """
-        Docstring here
+        This allows len(df) to return the right value
         """
         return len(self.df[list(self.df)[0]])
 
     # This function allows us to index by columns and rows
     # in string or integers df.loc(0, 0) <- returns the top left element
     def loc(self, col, row=None):
+        """
+        Indexes the dataframe in two dimensions,
+        by columns and rows.
+
+        Parameters:
+        col : int or string (mandatory)
+            Looks at the string or index of the column to return
+            Columns are 0-indexed
+        row : int
+            Indexes the DataFrame by rows
+            Must be an integer.
+
+        Returns:
+         A numpy array
+
+        """
         if row is None:
             if type(col) == int:
                 return np.array(self.df[list(self.df)[col]])
@@ -162,6 +235,18 @@ class DataFrame:
 
     # This returns a list of all the column elements in a row
     def get_row(self, row):
+        """
+        Returns a list of all elements in the DataFrame
+        in the specified row.
+
+        Paramaters:
+        row : int
+            Must be an integer
+            0-indexed
+        
+        Returns:
+            A list
+        """
         if type(row) != int:
             raise TypeError("Row needs to be an Integer")
         result = []
@@ -172,7 +257,7 @@ class DataFrame:
     # These are all aggregation functions (they return a list)
     def sum(self):
         """
-        Docstring goes here
+        Returns a list with the value of the sum of all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -183,7 +268,7 @@ class DataFrame:
 
     def min(self):
         """
-        Docstring goes here
+        Returns a list with the minimum value from all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -194,7 +279,7 @@ class DataFrame:
 
     def max(self):
         """
-        Docstring goes here
+        Returns a list with the maximum value from all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -205,7 +290,7 @@ class DataFrame:
 
     def mean(self):
         """
-        Docstring goes here
+        Returns a list with the mean of all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -216,7 +301,7 @@ class DataFrame:
 
     def median(self):
         """
-        Docstring goes here
+        Returns a list with the median of all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -227,7 +312,7 @@ class DataFrame:
 
     def std(self):
         """
-        Docstring goes here
+        Returns a list with the standard deviation of all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -238,10 +323,18 @@ class DataFrame:
 
     def rename(self, old_col, new_col, inplace=True):
         """
-        Docstring goes here
-        This way should maintain the order of the elements
-        in the dictionary which will be better for visualization
-        and testing purposes
+        Renames a column in the DataFrame. 
+
+        Arguments:
+            old_col: string
+                current name of the column
+            new_col: string 
+                new name of the column
+            inplace: boolean
+                This parameter defines if the change will be done to the current
+                instance of the DataFrame or return a new instance with the new attributes.
+                The old_col must be inside a DataFrame.
+
         """
         if type(new_col) != str or type(old_col) != str:
             raise TypeError("Column name needs to be a String")
@@ -262,7 +355,16 @@ class DataFrame:
 
     def drop(self, drop_col, inplace=True):
         """
-        Docstring here
+        Drops the specified column from a DataFrame.
+
+        Arguments:
+        drop_col: string
+            the column to be dropped from the DataFrame
+            must be a string and present in the DataFrame
+        inplace: boolean
+            Defines if the change will be done to the current
+            instance of the Dataframe or return a new instance with the new attributes.
+
         """
         if type(drop_col) != str:
             raise TypeError("Column name needs to be a string")
