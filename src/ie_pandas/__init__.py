@@ -161,6 +161,12 @@ class DataFrame:
     # This can replace or add columns
     # Only works with full columns
     def __setitem__(self, idx, newcol):
+        """
+        Replaces data in the DataFrame.
+        
+        Note:
+            Updates self.columns automatically.
+        """
         if type(newcol) != np.ndarray:
             raise TypeError("Input needs to be a numpy array")
         if len(newcol) != len(self.df[self.columns[0]]):
@@ -192,6 +198,7 @@ class DataFrame:
 
         Returns:
          A numpy array
+
         """
         if row is None:
             if type(col) == int:
