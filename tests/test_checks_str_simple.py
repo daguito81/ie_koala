@@ -3,6 +3,7 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
+It checks whether the assignment as string works properly. 
 '''
 
 
