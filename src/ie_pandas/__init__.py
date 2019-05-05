@@ -89,8 +89,7 @@ class DataFrame:
         for key in self.df:
             self.df[key] = np.array(self.df[key])
 
-    @property  # This is some voodoo to make it print like a table
-    def frame(self):
+    def _frame(self):
         """
         Docstring here
         This is to pretty print the dataframe
@@ -98,20 +97,26 @@ class DataFrame:
         matrix = zip(*[list(value) if isinstance(list(value), list)
                        else it.repeat(list(value))
                        for key, value in self.df.items()])
-        print(''.join(['{:15}'.format(key) for key in self.df.keys()]))
-        print(''.join(['{:15}'.format(str(self.df[key].dtype))
-                       for key in self.df.keys()]))
-        print("")
+        title = ''.join(['{:15}'.format(key) for key in self.df.keys()])
+        dtypes = ''.join(['{:15}'.format(str(self.df[key].dtype))
+                          for key in self.df.keys()])
+        spacer = ""
+        data = ""
         for row in matrix:
-            print(''.join(['{:15}'.format(str(item)) for item in row]))
+            data = data +\
+                 ''.join(['{:15}'.format(str(item)) for item in row]) +\
+                 "\n"
+
+        table = title + "\n" + dtypes + "\n" + spacer + "\n" + data
+        return table
 
     # This is to give instructions on how to print the dataframe
     def __repr__(self):
-        return "Koala Dataframe, use .frame to visualize or print(df)"
+        return self._frame()
 
-    # Prints the DataFrame as a dictionary
+    # Prints the DataFrame as well
     def __str__(self):
-        return f"{self.df}"
+        return self._frame()
 
     # This allows bracket indexing " df["colname"] "
     def __getitem__(self, item):
@@ -127,6 +132,13 @@ class DataFrame:
             raise ValueError("Input needs to be same length as dataframe")
         self.df[idx] = newcol
         self.columns = list(self.df)
+
+        # This function returns the length of a specific column
+    def __len__(self):
+        """
+        Docstring here
+        """
+        return len(self.df[list(self.df)[0]])
 
     # This function allows us to index by columns and rows
     # in string or integers df.loc(0, 0) <- returns the top left element
@@ -266,10 +278,3 @@ class DataFrame:
             df_copy = self.df.copy()
             df_copy.pop(drop_col)
             return DataFrame(df_copy)
-
-    # This function returns the length of a specific column
-    def __len__(self):
-        """
-        Docstring here
-        """
-        return len(self.df[list(self.df)[0]])
