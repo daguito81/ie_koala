@@ -6,8 +6,9 @@ class DataFrame:
     """
     Creates a DataFrame Object to interact with the data.
 
-    In this section, the basic functionalities of the DataFrame class are created.
-    
+    In this section, the basic functionalities of
+    the DataFrame class are created.
+
     The arguments of the function are:
 
     Parameters
@@ -32,10 +33,12 @@ class DataFrame:
         'float': [1.1, 2.2, 3.3],
         'string': ['one', 'two', 'three'],
     }
-    df = DataFrame(data=my_dict, columns=['integer', 'float', 'strings'], index=[0, 1, 2])
+    df = DataFrame(data=my_dict, columns=
+                   ['integer', 'float', 'strings'], index=[0, 1, 2])
 
     Visualizing:
-        The DataFrame can be visualized by simply passing the name in an interactive shell
+        The DataFrame can be visualized by simply
+        passing the name in an interactive shell
         or by calling the print(df) function.
 
     """
@@ -121,16 +124,16 @@ class DataFrame:
 
     def _frame(self):
         """
-        Prints the DataFrame in a user-friendly format. 
-        
+        Prints the DataFrame in a user-friendly format.
+
         The frame functionality also prints the
-        data types for all the columns. 
-        The df command can be used interactively to print the 
-        DataFrame or the DataFrame can be printed using print(df). 
-        Both methods will return the same result. 
-        
+        data types for all the columns.
+        The df command can be used interactively to print the
+        DataFrame or the DataFrame can be printed using print(df).
+        Both methods will return the same result.
+
         Note:
-            frame() is protected; 
+            frame() is protected;
             it should not be directly called by the user
         """
         matrix = zip(*[list(value) if isinstance(list(value), list)
@@ -143,8 +146,8 @@ class DataFrame:
         data = ""
         for row in matrix:
             data = data +\
-                 ''.join(['{:15}'.format(str(item)) for item in row]) +\
-                 "\n"
+                ''.join(['{:15}'.format(str(item)) for item in row]) +\
+                "\n"
 
         table = title + "\n" + dtypes + "\n" + spacer + "\n" + data
         return table
@@ -167,8 +170,8 @@ class DataFrame:
     def __getitem__(self, item):
         """
         Allows the use of bracket indexing.
-        
-        Example: 
+
+        Example:
             df['int']
         """
         return np.array(self.df[item])
@@ -179,7 +182,7 @@ class DataFrame:
     def __setitem__(self, idx, newcol):
         """
         Replaces data in the DataFrame.
-        
+
         Note:
             Updates self.columns automatically.
         """
@@ -243,7 +246,7 @@ class DataFrame:
         row : int
             Must be an integer
             0-indexed
-        
+
         Returns:
             A list
         """
@@ -312,7 +315,8 @@ class DataFrame:
 
     def std(self):
         """
-        Returns a list with the standard deviation of all the numerical columns.
+        Returns a list with the standard deviation
+        of all the numerical columns.
         """
         result = []
         for key in self.df.keys():
@@ -323,16 +327,18 @@ class DataFrame:
 
     def rename(self, old_col, new_col, inplace=True):
         """
-        Renames a column in the DataFrame. 
+        Renames a column in the DataFrame.
 
         Arguments:
             old_col: string
                 current name of the column
-            new_col: string 
+            new_col: string
                 new name of the column
             inplace: boolean
-                This parameter defines if the change will be done to the current
-                instance of the DataFrame or return a new instance with the new attributes.
+                This parameter defines if the change
+                will be done to the current
+                instance of the DataFrame or return
+                a new instance with the new attributes.
                 The old_col must be inside a DataFrame.
 
         """
@@ -363,7 +369,8 @@ class DataFrame:
             must be a string and present in the DataFrame
         inplace: boolean
             Defines if the change will be done to the current
-            instance of the Dataframe or return a new instance with the new attributes.
+            instance of the Dataframe or return a new instance
+            with the new attributes.
 
         """
         if type(drop_col) != str:
