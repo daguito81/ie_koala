@@ -3,6 +3,7 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
+The test aims to veriry the correct implementation of the .loc functionality.
 '''
 
 
@@ -18,7 +19,7 @@ def test_checks_loc_errors_simple():
 
     assert np.array_equal(df.loc(0), np.array([1, 2, 3]))
     assert df.loc(0, 0) == 1
-    assert df.loc(3, 2)
+    assert df.loc(3, 2) == 2.2
 
     # Test to check that it catches bad column parameter
     try:
