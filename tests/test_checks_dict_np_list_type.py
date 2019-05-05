@@ -3,6 +3,8 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
+This check makes sure that the DataFrame function raises an error
+if every member of the dictionary is not either a list or a np.array.
 '''
 
 

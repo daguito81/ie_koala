@@ -2,6 +2,8 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
+This test aims to verify that a TypeError is raised
+if the data passed in the DataFrame function is not in the right format (dictionary).
 '''
 
 

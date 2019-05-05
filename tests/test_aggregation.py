@@ -3,6 +3,9 @@ import ie_pandas as ko
 
 """
 This test passes GREEN
+This test aims to verify that all the aggregation functions work.
+In this case we use a sample dataframe to check if the expected result ofsum, min, max, mean, median, std 
+are equal to the one provided by the sum function implemented in our ie_pandas library. 
 """
 
 

@@ -3,6 +3,10 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
+This test aims to verify that the DataFrame function in the ie_pandas library
+raises the proper error in case of wrong index length, type, and member type.
+The test is performed for both empty and full columns.
+Finally, the test checks that the function doesn't raise any error if a valid index is passed.
 '''
 
 
