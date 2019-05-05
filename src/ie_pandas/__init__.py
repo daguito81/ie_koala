@@ -147,14 +147,26 @@ class DataFrame:
 
     # This is to give instructions on how to print the dataframe
     def __repr__(self):
+        """
+        Prints the DataFrame by calling print(df).
+        """
         return self._frame()
 
     # Prints the DataFrame as well
     def __str__(self):
+        """
+        Prints the DataFrame by calling df interactively.
+        """
         return self._frame()
 
     # This allows bracket indexing " df["colname"] "
     def __getitem__(self, item):
+        """
+        Allows the use of bracket indexing.
+        
+        Example: 
+            df['int']
+        """
         return np.array(self.df[item])
 
     # This allows the DataFrame to be updated with new data
