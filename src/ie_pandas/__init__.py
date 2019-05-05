@@ -56,7 +56,7 @@ class DataFrame:
         for i in self.data:
             test.append(len(i))
         if len(set(test)) != 1:
-            raise ValueError("Lenght of all arrays must be equal")
+            raise ValueError("Length of all arrays must be equal")
 
         # Constructor if no columns parameter is passed
         if columns is None:
@@ -121,13 +121,17 @@ class DataFrame:
 
     def _frame(self):
         """
-        Arguments:
-
-        Returns:
-            A formatted version of the dataframe. 
-
-        Similar to:
-
+        Prints the DataFrame in a user-friendly format. 
+        
+        The frame functionality also prints the
+        data types for all the columns. 
+        The df command can be used interactively to print the 
+        DataFrame or the DataFrame can be printed using print(df). 
+        Both methods will return the same result. 
+        
+        Note:
+            frame() is protected; 
+            it should not be directly called by the user
         """
         matrix = zip(*[list(value) if isinstance(list(value), list)
                        else it.repeat(list(value))
