@@ -171,18 +171,7 @@ class DataFrame:
     # This function returns the length of a specific column
     def __len__(self):
         """
-        Allows us to index the dataframe in 2 dimensions
-        by columns and rows
-
-        Parameters:
-        col : int or string (mandatory)
-            This works by looking at the string or index of the column to return
-            The columns are 0 indexed
-        row : int
-            This lets is index by the row of the DataFrame
-            This needs to be an integer
-
-        Returns a numpy Array
+        This allows len(df) to return the right value
         """
         return len(self.df[list(self.df)[0]])
 
@@ -223,6 +212,18 @@ class DataFrame:
 
     # This returns a list of all the column elements in a row
     def get_row(self, row):
+        """
+        Returns a list of all elements in the DataFrame
+        in the specified row.
+
+        Paramaters:
+        row : int
+            Must be an integer
+            0-indexed
+        
+        Returns:
+            A list
+        """
         if type(row) != int:
             raise TypeError("Row needs to be an Integer")
         result = []
