@@ -8,6 +8,11 @@ class DataFrame:
     ed3f22cc
     #TODO Fill this
     This is a test docstring so we can commit it
+
+    Returns:
+
+    Notes: 
+
     """
 
     def __init__(self, data, columns=None, index=None):
@@ -91,8 +96,13 @@ class DataFrame:
 
     def _frame(self):
         """
-        Docstring here
-        This is to pretty print the dataframe
+        Arguments:
+
+        Returns:
+            A formatted version of the dataframe. 
+
+        Similar to:
+
         """
         matrix = zip(*[list(value) if isinstance(list(value), list)
                        else it.repeat(list(value))
@@ -133,10 +143,19 @@ class DataFrame:
         self.df[idx] = newcol
         self.columns = list(self.df)
 
-        # This function returns the length of a specific column
+    # This function returns the length of a specific column
     def __len__(self):
         """
         Docstring here
+
+        Arguments: 
+        
+        
+        Returns:
+            The length of a specific column in the dataframe.
+
+        Similar to: 
+            len() function in pandas
         """
         return len(self.df[list(self.df)[0]])
 
@@ -172,7 +191,11 @@ class DataFrame:
     # These are all aggregation functions (they return a list)
     def sum(self):
         """
-        Docstring goes here
+        Arguments:
+        
+        Results:
+
+        Similar to:
         """
         result = []
         for key in self.df.keys():
@@ -183,7 +206,11 @@ class DataFrame:
 
     def min(self):
         """
-        Docstring goes here
+        Arguments:
+
+        Results:
+
+        Similar to:
         """
         result = []
         for key in self.df.keys():
@@ -194,7 +221,11 @@ class DataFrame:
 
     def max(self):
         """
-        Docstring goes here
+        Arguments:
+
+        Results:
+
+        Similar to:
         """
         result = []
         for key in self.df.keys():
@@ -205,7 +236,12 @@ class DataFrame:
 
     def mean(self):
         """
-        Docstring goes here
+        Arguments:
+
+        Results:
+
+        Similar to:
+
         """
         result = []
         for key in self.df.keys():
@@ -216,7 +252,11 @@ class DataFrame:
 
     def median(self):
         """
-        Docstring goes here
+        Arguments:
+
+        Results:
+
+        Similar to:
         """
         result = []
         for key in self.df.keys():
@@ -227,7 +267,11 @@ class DataFrame:
 
     def std(self):
         """
-        Docstring goes here
+        Arguments:
+
+        Results:
+
+        Similar to:
         """
         result = []
         for key in self.df.keys():
@@ -238,10 +282,20 @@ class DataFrame:
 
     def rename(self, old_col, new_col, inplace=True):
         """
-        Docstring goes here
-        This way should maintain the order of the elements
-        in the dictionary which will be better for visualization
-        and testing purposes
+        Arguments:
+            self: name of the dataframe
+            old_col: current name of the column
+            new_col: new name of the column
+
+        Results:
+            Renames a column in the dataframe.
+
+        Similar to:
+        
+        Notes: 
+            This way should maintain the order of the elements
+            in the dictionary which will be better for visualization
+            and testing purposes
         """
         if type(new_col) != str or type(old_col) != str:
             raise TypeError("Column name needs to be a String")
@@ -262,7 +316,12 @@ class DataFrame:
 
     def drop(self, drop_col, inplace=True):
         """
-        Docstring here
+        Arguments:
+
+        Results:
+
+        Similar to:
+    
         """
         if type(drop_col) != str:
             raise TypeError("Column name needs to be a string")
