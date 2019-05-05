@@ -99,6 +99,9 @@ class DataFrame:
                        else it.repeat(list(value))
                        for key, value in self.df.items()])
         print(''.join(['{:15}'.format(key) for key in self.df.keys()]))
+        print(''.join(['{:15}'.format(str(self.df[key].dtype))
+                       for key in self.df.keys()]))
+        print("")
         for row in matrix:
             print(''.join(['{:15}'.format(str(item)) for item in row]))
 
