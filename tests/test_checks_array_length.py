@@ -3,6 +3,8 @@ import ie_pandas as ko
 
 '''
 This test passes GREEN
+This test aims to verify that the DataFrame function in ie_pandas provides
+an error message if the length of the columns is not the same for the whole data frame
 '''
 
 
