@@ -307,20 +307,18 @@ class DataFrame:
 
     def rename(self, old_col, new_col, inplace=True):
         """
+        Renames a column in the DataFrame. 
+
         Arguments:
-            self: name of the dataframe
-            old_col: current name of the column
-            new_col: new name of the column
+            old_col: string
+                current name of the column
+            new_col: string 
+                new name of the column
+            inplace: boolean
+                This parameter defines if the change will be done to the current
+                instance of the DataFrame or return a new instance with the new attributes.
+                The old_col must be inside a DataFrame.
 
-        Results:
-            Renames a column in the dataframe.
-
-        Similar to:
-        
-        Notes: 
-            This way should maintain the order of the elements
-            in the dictionary which will be better for visualization
-            and testing purposes
         """
         if type(new_col) != str or type(old_col) != str:
             raise TypeError("Column name needs to be a String")
@@ -341,12 +339,16 @@ class DataFrame:
 
     def drop(self, drop_col, inplace=True):
         """
+        Drops the specified column from a DataFrame.
+
         Arguments:
-
-        Results:
-
-        Similar to:
-    
+        drop_col: string
+            the column to be dropped from the DataFrame
+            must be a string and present in the DataFrame
+        inplace: boolean
+            Defines if the change will be done to the current
+            instance of the Dataframe or return a new instance with the new attributes.
+            
         """
         if type(drop_col) != str:
             raise TypeError("Column name needs to be a string")
