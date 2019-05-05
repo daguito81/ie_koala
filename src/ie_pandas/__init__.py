@@ -171,22 +171,39 @@ class DataFrame:
     # This function returns the length of a specific column
     def __len__(self):
         """
-        Returns a list of all elements in the DataFrame
-        in the specified row.
+        Allows us to index the dataframe in 2 dimensions
+        by columns and rows
 
-        Paramaters:
-            row : int
-                Must be an integer
-                0-indexed
-        
-        Returns:
-            A list
+        Parameters:
+        col : int or string (mandatory)
+            This works by looking at the string or index of the column to return
+            The columns are 0 indexed
+        row : int
+            This lets is index by the row of the DataFrame
+            This needs to be an integer
+
+        Returns a numpy Array
         """
         return len(self.df[list(self.df)[0]])
 
     # This function allows us to index by columns and rows
     # in string or integers df.loc(0, 0) <- returns the top left element
     def loc(self, col, row=None):
+        """
+        Indexes the dataframe in two dimensions,
+        by columns and rows.
+
+        Parameters:
+        col : int or string (mandatory)
+            Looks at the string or index of the column to return
+            Columns are 0-indexed
+        row : int
+            Indexes the DataFrame by rows
+            Must be an integer.
+
+        Returns:
+         A numpy array
+        """
         if row is None:
             if type(col) == int:
                 return np.array(self.df[list(self.df)[col]])
