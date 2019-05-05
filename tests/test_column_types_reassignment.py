@@ -4,7 +4,7 @@ import pytest
 '''
 This test is GREEN
 The purpose of this is to validate correct reassignment of data types
-inside an existing dataframe. 
+inside an existing dataframe.
 '''
 
 

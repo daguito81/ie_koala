@@ -4,8 +4,10 @@ import pytest
 
 '''
 This test is GREEN
-Purpose of the test is to check the functioning of indexing inside a dataframe, by column. 
-It checks for the indexing by a string or an integer based on name or position of the column.
+Purpose of the test is to check the functioning of
+indexing inside a dataframe, by column.
+It checks for the indexing by a string or an integer
+based on name or position of the column.
 '''
 
 
