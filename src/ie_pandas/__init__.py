@@ -4,14 +4,39 @@ import itertools as it
 
 class DataFrame:
     """
-    Dataframe docstring
-    ed3f22cc
-    #TODO Fill this
-    This is a test docstring so we can commit it
+    Creates a DataFrame Object to interact with the data
 
-    Returns:
+    In this section, the basic functionalities of the DataFrame class are created.
+    
+    The arguments of the function are:
 
-    Notes: 
+    Parameters
+    ---------------
+    data : dict
+        Must be a dictionary of lists or dictionary of numpy arrays.
+        All the elements of the dictionary must have the same length.
+    columns=None : list of strings
+        Must be a list of strings.
+        The number of items in the list must be the same size as the number
+        of keys in the dictionary passed to the data.
+    index=None : list of integers
+        Must be a list of integers.
+        This attribute is not currently in use for any functionality.
+        get_row() works with the index being 0 - indexed at all times.
+
+    Example:
+    ---------------
+    from ie_pandas import DataFrame
+    my_dict = {
+        'int': [1, 2, 3],
+        'float': [1.1, 2.2, 3.3],
+        'string': ['one', 'two', 'three'],
+    }
+    df = DataFrame(data=my_dict, columns=['integer', 'float', 'strings'], index=[0, 1, 2])
+
+    Visualizing:
+    The DataFrame can be visualized by simply passing the name in an interactive shell
+    or by calling the print(df) function.
 
     """
 
